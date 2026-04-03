@@ -18,22 +18,25 @@ export interface FetchNotesResponse {
     totalPages: number;
 }
 
-
+import type { NoteTag } from '@/types/note';
 export interface FetchNotesParams {
     page: number;
     search?: string;
+    tag?: NoteTag | 'all';
 }
 
 
 export const fetchNotes = async ({
     page,
     search = '',
+    tag,
 }: FetchNotesParams): Promise<FetchNotesResponse> => {
     const { data } = await instance.get<FetchNotesResponse>('/notes', {
         params: {
             page,
             perPage: 12,
             search,
+            ...(tag && tag !== 'all' ? { tag } : {}),
         },
     });
 
