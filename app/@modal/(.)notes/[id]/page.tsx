@@ -39,9 +39,7 @@ export default async function Page({
 
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>
-            <Modal>
-                <NotePreview id={id} />
-            </Modal>
+            <NotePreview id={id} />
         </HydrationBoundary>
     );
 }
