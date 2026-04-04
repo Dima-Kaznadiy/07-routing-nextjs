@@ -47,7 +47,7 @@ export const fetchNotes = async ({
 export const createNote = async (
     note: Omit<Note, 'id' | 'createdAt' | 'updatedAt'>
 ): Promise<Note> => {
-    const { data } = await instance.post<Note>('/notes', note);
+    const { data } = await instance.post<Note>('/notes/filter/all', note);
     return data;
 };
 
